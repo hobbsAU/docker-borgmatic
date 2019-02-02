@@ -21,13 +21,13 @@ docker pull hobbsau/borgmatic:latest
 ### Required configuration directories and files
 You will need to create the following files or directories on the backup source host.
 
-Config Directory | Description 
- --- | --- 
-/srv/backup/borgconf | Used to hold borg configuration data such as repo keyfile under a subdirectory keys/repokeyfile
-/srv/backup/borgcache | Used to hold borg cache information and speeds up backups significantly
-/srv/backup/borgmaticconf | Directory must include the borgmatic "config.yaml"
-/home/user/.ssh | If using a remote SSH repo then you will also need to configure keys and any SSH config parameters for the remote host. This is typically stored in the user's .ssh directory.
-/some/path/to/backuplocation | Multiple backup source directories can be specified as long as they are mounted to the container under /backup.
+Host Directory | Mount point | Description 
+ --- | --- | --- 
+/srv/backup/borgconf | /root/.config/borg | Used to hold borg configuration data such as repo keyfile under a subdirectory keys/repokeyfile
+/srv/backup/borgcache | /root/.cache/borg | Used to hold borg cache information and speeds up backups significantly
+/srv/backup/borgmaticconf | /root/.config/borgmatic | Directory must include the borgmatic "config.yaml"
+/home/user/.ssh | /root/.ssh | If using a remote SSH repo then you will also need to configure keys and any SSH config parameters for the remote host. This is typically stored in the user's .ssh directory.
+/pathto/backuplocation1 | /backup/backuplocation1 | Multiple backup source directories can be specified as long as they are mounted to the container under /backup.
 
 ### Sample "config.yaml" for borgmatic
 Note: The source_directories should not be changed as this is a directory internal to the container.
@@ -44,7 +44,7 @@ location:
 
     # Any paths matching these patterns are excluded from backups.
     exclude_patterns:
-        - /home/*/.cache
+        - /backup/*/.cache
 
 retention:
     # Retention policy for how many backups to keep in each category.
@@ -71,7 +71,7 @@ You can run borgmatic and start a backup by invoking it without arguments:
 ```bash
 docker run \
   --rm -t --name hobbsau-borgmatic \
-  -e TZ=UTC
+  -e TZ=UTC \
   -v /srv/backup/borgconf:/root/.config/borg \
   -v /srv/backup/borgcache:/cache \
   -v /srv/backup/borgmaticconf:/root/.config/borgmatic \
@@ -86,7 +86,7 @@ docker run \
 ```bash
 docker run \
   --rm -t --name hobbsau-borgmatic \
-  -e TZ=UTC
+  -e TZ=UTC \
   -v /srv/backup/borgconf:/root/.config/borg \
   -v /srv/backup/borgcache:/cache \
   -v /srv/backup/borgmaticconf:/root/.config/borgmatic \

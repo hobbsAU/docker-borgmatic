@@ -23,8 +23,7 @@ RUN 	\
     rm -rf /var/cache/apk/*
 
 #Runtime environment
-ENV BORG_CACHE_DIR /cache
-WORKDIR /tmp
+WORKDIR /backup
 
 VOLUME /root/.config
 VOLUME /root/.ssh
