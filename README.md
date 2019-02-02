@@ -25,11 +25,12 @@ docker pull hobbsau/borgmatic:latest
 
 ## Required configuration directories and files
 You will need to create the following files or directories on the backup source host.
-| Config Directory | Description |
-| --- | --- |
-| /srv/backup/borgconf | this is used to hold borg configuration data such as repo keyfile |
-| /srv/backup/borgcache | used to hold borg cache information and speeds up backups significantly |
-| /srv/backup/borgmaticconf | must include the borgmatic "config.yaml" |
+
+Config Directory | Description 
+ --- | --- 
+/srv/backup/borgconf | this is used to hold borg configuration data such as repo keyfile
+/srv/backup/borgcache | used to hold borg cache information and speeds up backups significantly
+/srv/backup/borgmaticconf | must include the borgmatic "config.yaml"
 
 If using a remote SSH repo then you will also need to configure keys and any SSH config parameters for the remote host. This is typically stored in the user's .ssh directory.
 /home/user/.ssh
