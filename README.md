@@ -140,8 +140,8 @@ file](https://raw.githubusercontent.com/hobbsAU/docker-borgmatic/master/borg_cro
 Then, from the directory where you downloaded it:
 
 ```bash
-sudo mv borgmatic /etc/cron.d/borgmatic
-sudo chmod +x /etc/cron.d/borgmatic
+sudo mv borg_cron /etc/cron.d/borg_cron
+sudo chmod +x /etc/cron.d/borg_cron
 ```
 
 You can modify the cron file if you'd like to run borgmatic more or less frequently.
