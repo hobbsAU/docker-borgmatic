@@ -18,7 +18,7 @@ Both borg and borgmatic are provided within the Alpine Edge base container. borg
 docker pull hobbsau/borgmatic:latest
 ```
 
-## Required configuration directories and files
+### Required configuration directories and files
 You will need to create the following files or directories on the backup source host.
 
 Config Directory | Description 
@@ -29,6 +29,37 @@ Config Directory | Description
 /home/user/.ssh | If using a remote SSH repo then you will also need to configure keys and any SSH config parameters for the remote host. This is typically stored in the user's .ssh directory.
 
 
+### Sample "config.yaml" for borgmatic
+```yaml
+location:
+    # List of source directories to backup. Globs are expanded.
+    source_directories:
+        - /home
+        - /etc
+        - /var/log/syslog*
+
+    # Paths to local or remote repositories.
+    repositories:
+        - user@backupserver:sourcehostname.borg
+
+    # Any paths matching these patterns are excluded from backups.
+    exclude_patterns:
+        - /home/*/.cache
+
+retention:
+    # Retention policy for how many backups to keep in each category.
+    keep_daily: 7
+    keep_weekly: 4
+    keep_monthly: 6
+
+consistency:
+    # List of consistency checks to run: "repository", "archives", or both.
+    checks:
+        - repository
+        - archives
+```
+
+
 ## Usage
 Ensure all directories and configuration files are available in the section above.
 
@@ -37,7 +68,7 @@ This docker container uses an entrypoint so any subsequent arguements to the doc
 ### Example: Performing a backup 
 You can run borgmatic and start a backup by invoking it without arguments:
 
-```
+```bash
 docker run \
   --rm -it --name hobbsau-borgmatic \
   -e TZ=UTC
@@ -52,7 +83,7 @@ docker run \
 ```
 
 ### Example: Listing backup archives
-```
+```bash
 docker run \
   --rm -it --name hobbsau-borgmatic \
   -e TZ=UTC
