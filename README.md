@@ -1,11 +1,6 @@
 # Borgmatic in a Docker container
 
 
-Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11
---- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
-Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269
-
-
 ## Overview
 
 docker-borgmatic is a simple container I wrote to simplyfy and provide a portable borgmatic solution. borgmatic is a python based wrapper script for borgbackup.
@@ -28,12 +23,10 @@ You will need to create the following files or directories on the backup source 
 
 Config Directory | Description 
  --- | --- 
-/srv/backup/borgconf | this is used to hold borg configuration data such as repo keyfile
-/srv/backup/borgcache | used to hold borg cache information and speeds up backups significantly
-/srv/backup/borgmaticconf | must include the borgmatic "config.yaml"
-
-If using a remote SSH repo then you will also need to configure keys and any SSH config parameters for the remote host. This is typically stored in the user's .ssh directory.
-/home/user/.ssh
+/srv/backup/borgconf | Used to hold borg configuration data such as repo keyfile under a subdirectory keys/repokeyfile
+/srv/backup/borgcache | Used to hold borg cache information and speeds up backups significantly
+/srv/backup/borgmaticconf | Directory must include the borgmatic "config.yaml"
+/home/user/.ssh | If using a remote SSH repo then you will also need to configure keys and any SSH config parameters for the remote host. This is typically stored in the user's .ssh directory.
 
 
 ## Usage
