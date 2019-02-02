@@ -3,7 +3,7 @@
 
 ## Overview
 
-docker-borgmatic is a simple container I wrote to simplyfy and provide a portable borgmatic solution. borgmatic is a python based wrapper script for borgbackup.
+docker-borgmatic is a simple ephemeral container I wrote to simplyfy and provide a portable borgmatic solution. borgmatic is a python based wrapper script for borgbackup.
 
 The container supports specifying your settings in a declarative configuration file rather than having to put them all on the command-line, and borgmatic handles common errors.
 
@@ -70,7 +70,7 @@ You can run borgmatic and start a backup by invoking it without arguments:
 
 ```bash
 docker run \
-  --rm -it --name hobbsau-borgmatic \
+  --rm -t --name hobbsau-borgmatic \
   -e TZ=UTC
   -v /srv/backup/borgconf:/root/.config/borg \
   -v /srv/backup/borgcache:/cache \
@@ -85,7 +85,7 @@ docker run \
 ### Example: Listing backup archives
 ```bash
 docker run \
-  --rm -it --name hobbsau-borgmatic \
+  --rm -t --name hobbsau-borgmatic \
   -e TZ=UTC
   -v /srv/backup/borgconf:/root/.config/borg \
   -v /srv/backup/borgcache:/cache \
@@ -97,9 +97,9 @@ docker run \
   hobbsau/borgmatic --list
 ```
 
-### Initialization
+### Initialisation
 
-Before you can create backups with borgmatic, you first need to initialize a
+Before you can create backups with borgmatic, you first need to initialise a
 Borg repository so you have a destination for your backup archives. (But skip
 this step if you already have a Borg repository.) To create a repository, run
 a command like the following:
@@ -136,7 +136,7 @@ configure a job runner to invoke it periodically.
 ### cron
 
 If you're using cron, download the [sample cron
-file](https://projects.torsion.org/witten/borgmatic/src/master/sample/cron/borgmatic).
+file](https://raw.githubusercontent.com/hobbsAU/docker-borgmatic/master/borg_cron).
 Then, from the directory where you downloaded it:
 
 ```bash
