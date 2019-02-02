@@ -25,9 +25,10 @@ RUN 	\
 #Runtime environment
 WORKDIR /backup
 
-VOLUME /root/.config
+VOLUME /root/.config/borg
+VOLUME /root/.cache/borg
+VOLUME /root/.config/borgmatic
 VOLUME /root/.ssh
-VOLUME /cache
 VOLUME /backup
 
 ENTRYPOINT ["/usr/bin/borgmatic"]
