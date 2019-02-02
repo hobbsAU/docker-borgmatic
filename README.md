@@ -73,12 +73,12 @@ docker run \
   --rm -t --name hobbsau-borgmatic \
   -e TZ=UTC \
   -v /srv/backup/borgconf:/root/.config/borg \
-  -v /srv/backup/borgcache:/cache \
-  -v /srv/backup/borgmaticconf:/root/.config/borgmatic \
+  -v /srv/backup/borgcache:/root/.cache/borg \
+  -v /srv/backup/borgmaticconf:/root/.config/borgmatic:ro \
   -v /home/user/.ssh:/root/.ssh:ro \
-  -v /backuplocation1:/backup/backuplocation1 \
-  -v /backuplocation2:/backup/backuplocation2 \
-  -v /backuplocationN:/backup/backuplocationN \
+  -v /backuplocation1:/backup/backuplocation1:ro \
+  -v /backuplocation2:/backup/backuplocation2:ro \
+  -v /backuplocationN:/backup/backuplocationN:ro \
   hobbsau/borgmatic --verbosity 1
 ```
 
@@ -88,12 +88,12 @@ docker run \
   --rm -t --name hobbsau-borgmatic \
   -e TZ=UTC \
   -v /srv/backup/borgconf:/root/.config/borg \
-  -v /srv/backup/borgcache:/cache \
-  -v /srv/backup/borgmaticconf:/root/.config/borgmatic \
+  -v /srv/backup/borgcache:/root/.cache/borg \
+  -v /srv/backup/borgmaticconf:/root/.config/borgmatic:ro \
   -v /home/user/.ssh:/root/.ssh:ro \
-  -v /backuplocation1:/backup/backuplocation1 \
-  -v /backuplocation2:/backup/backuplocation2 \
-  -v /backuplocationN:/backup/backuplocationN \
+  -v /backuplocation1:/backup/backuplocation1:ro \
+  -v /backuplocation2:/backup/backuplocation2:ro \
+  -v /backuplocationN:/backup/backuplocationN:ro \
   hobbsau/borgmatic --list
 ```
 
