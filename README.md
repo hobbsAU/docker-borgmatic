@@ -123,5 +123,4 @@ You can modify the cron file if you'd like to run borgmatic more or less frequen
 
 Please open an issue if you find a problem or wish to request a feature. PRs are welcome.
 
-docker run --rm -it -e TZ=Asia/Dubai -v /volume1/data/systems/Synology.DS1512/00_syno_bin/borg:/root/.config/borg -v /volume1/data/systems/Synology.DS1512/00_syno_bin/borgmatic:/root/.config/borgmatic -v /root/.ssh:/root/.ssh:ro -v /volume1/docker/borg_cache:/cache -v /volume1/data:/backup/volume1/data:ro -v /volume1/media/pictures:/backup/volume1/media/pictures:ro hobbsau/borgmatic --verbosity 1 --list
 
