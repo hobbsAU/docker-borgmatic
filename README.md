@@ -3,7 +3,7 @@
 
 ## Overview
 
-docker-borgmatic is a simple ephemeral container I wrote to simplyfy and provide a portable borgmatic solution. borgmatic is a python based wrapper script for borgbackup.
+docker-borgmatic is a simple ephemeral container I wrote to provide a portable backup solution. borgmatic is a python based wrapper script for borgbackup.
 
 The container supports specifying your settings in a declarative configuration file rather than having to put them all on the command-line, and borgmatic handles common errors.
 
