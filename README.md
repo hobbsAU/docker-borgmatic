@@ -27,16 +27,16 @@ Config Directory | Description
 /srv/backup/borgcache | Used to hold borg cache information and speeds up backups significantly
 /srv/backup/borgmaticconf | Directory must include the borgmatic "config.yaml"
 /home/user/.ssh | If using a remote SSH repo then you will also need to configure keys and any SSH config parameters for the remote host. This is typically stored in the user's .ssh directory.
-
+/some/path/to/backuplocation | Multiple backup source directories can be specified as long as they are mounted to the container under /backup.
 
 ### Sample "config.yaml" for borgmatic
+Note: The source_directories should not be changed as this is a directory internal to the container.
+
 ```yaml
 location:
     # List of source directories to backup. Globs are expanded.
     source_directories:
-        - /home
-        - /etc
-        - /var/log/syslog*
+        - /backup
 
     # Paths to local or remote repositories.
     repositories:
