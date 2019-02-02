@@ -29,7 +29,7 @@ WORKDIR /tmp
 VOLUME /root/.config
 VOLUME /root/.ssh
 VOLUME /cache
-VOLUME /data
+VOLUME /backup
 
 ENTRYPOINT ["/usr/bin/borgmatic"]
 
