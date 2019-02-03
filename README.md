@@ -42,6 +42,9 @@ location:
     repositories:
         - user@backupserver:sourcehostname.borg
 
+storage:
+    archive_name_format: 'hostname-{user}-{borgversion}-{now:%Y-%m-%d_%H:%M:%S}'
+
     # Any paths matching these patterns are excluded from backups.
     exclude_patterns:
         - /backup/*/.cache
@@ -51,12 +54,16 @@ retention:
     keep_daily: 7
     keep_weekly: 4
     keep_monthly: 6
+    keep_yearly: 7
+    prefix: 'nas-'
 
 consistency:
     # List of consistency checks to run: "repository", "archives", or both.
     checks:
         - repository
         - archives
+    check_last: 3
+    prefix: 'nas-'
 ```
 
 
@@ -79,7 +86,7 @@ docker run \
   -v /backuplocation1:/backup/backuplocation1:ro \
   -v /backuplocation2:/backup/backuplocation2:ro \
   -v /backuplocationN:/backup/backuplocationN:ro \
-  hobbsau/borgmatic --verbosity 1
+  hobbsau/borgmatic --stats --verbosity 1
 ```
 
 ### Example: Listing backup archives
