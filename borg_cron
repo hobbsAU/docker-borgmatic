@@ -6,7 +6,7 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
 #minute	hour	mday	month	wday	who	command
 15 22 * * * root /usr/local/bin/docker run \
   --rm -t --name hobbsau-borgmatic \
-  -e TZ=UTC
+  -e TZ=UTC \
   -v /srv/backup/borgconf:/root/.config/borg \
   -v /srv/backup/borgcache:/root/.cache/borg \
   -v /srv/backup/borgmaticconf:/root/.config/borgmatic:ro \
