@@ -1,0 +1,6 @@
+# You can add this to /etc/crontab to run borgmatic nightly.
+
+
+#minute	hour	mday	month	wday	who	command
+15	22 	* 	* 	* 	root 	/usr/local/bin/docker run --rm -t --name hobbsau-borgmatic -e TZ=UTC -v /srv/backup/borgconf:/root/.config/borg -v /srv/backup/borgcache:/root/.cache/borg -v /srv/backup/borgmaticconf:/root/.config/borgmatic:ro -v /home/user/.ssh:/root/.ssh:ro -v /backuplocation1:/backup/backuplocation1:ro -v /backuplocation2:/backup/backuplocation2:ro -v /backuplocationN:/backup/backuplocationN:ro hobbsau/borgmatic --stats --verbosity 1  >> /var/log/borgmatic.log 2>&1
+

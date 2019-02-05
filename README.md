@@ -3,7 +3,7 @@
 
 ## Overview
 
-docker-borgmatic is a simple ephemeral container I wrote to provide a portable backup solution. borgmatic is a python based wrapper script for borgbackup.
+docker-borgmatic is a simple ephemeral container I use to provide a portable backup solution. borgmatic is a python based wrapper script for borgbackup.
 
 The container supports specifying your settings in a declarative configuration file rather than having to put them all on the command-line, and borgmatic handles common errors.
 
@@ -53,9 +53,9 @@ retention:
     # Retention policy for how many backups to keep in each category.
     keep_daily: 7
     keep_weekly: 4
-    keep_monthly: 6
+    keep_monthly: 12 
     keep_yearly: 7
-    prefix: 'nas-'
+    prefix: 'hostname-'
 
 consistency:
     # List of consistency checks to run: "repository", "archives", or both.
@@ -63,7 +63,7 @@ consistency:
         - repository
         - archives
     check_last: 3
-    prefix: 'nas-'
+    prefix: 'hostname-'
 ```
 
 
@@ -143,12 +143,11 @@ configure a job runner to invoke it periodically.
 ### cron
 
 If you're using cron, download the [sample cron
-file](https://raw.githubusercontent.com/hobbsAU/docker-borgmatic/master/borg_cron).
+file](https://raw.githubusercontent.com/hobbsAU/docker-borgmatic/master/crontab).
 Then, from the directory where you downloaded it:
 
 ```bash
-sudo mv borg_cron /etc/cron.d/borg_cron
-sudo chmod +x /etc/cron.d/borg_cron
+sudo cat crontab | sudo tee -a /etc/crontab
 ```
 
 You can modify the cron file if you'd like to run borgmatic more or less frequently.
