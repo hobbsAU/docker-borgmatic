@@ -31,5 +31,5 @@ VOLUME /root/.config/borgmatic
 VOLUME /root/.ssh
 VOLUME /backup
 
-CMD ["/usr/bin/borgmatic"]
+ENTRYPOINT ["/usr/bin/borgmatic"]
 
