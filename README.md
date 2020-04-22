@@ -1,5 +1,9 @@
 # Borgmatic in a Docker container
 
+## Requirements
+Borg: 1.1.11
+Borgmatic: 1.5.1
+
 
 ## Overview
 
