@@ -1,18 +1,8 @@
 # Borgmatic in a Docker container
 
 ## Requirements
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-Borg: 1.1.16
-Borgmatic: 1.5.13
-=======
 Borgbackup: 1.2.1
 Borgmatic: 1.6.5
->>>>>>> Stashed changes
-=======
-Borgbackup: 1.2.1
-Borgmatic: 1.6.5
->>>>>>> Stashed changes
 
 
 ## Overview
