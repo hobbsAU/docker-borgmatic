@@ -14,7 +14,6 @@ The container supports specifying your settings in a declarative configuration f
 Both borg and borgmatic are provided within the Alpine Edge base container. borg and borgmatic are sourced from the Python Package Index and the latest versions along with dependencies are installed using pip.
 
 
-
 ## Installation
 
 ### Installing the docker container
