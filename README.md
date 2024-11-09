@@ -2,7 +2,7 @@
 
 ## Requirements
 Borgbackup: 1.4.0
-Borgmatic: 1.8.13
+Borgmatic: 1.9.0
 
 
 ## Overview
